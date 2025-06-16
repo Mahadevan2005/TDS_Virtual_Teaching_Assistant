@@ -6,7 +6,8 @@ description: "TDS Virtual TA Project Sample (but not the actual evaluation) Ques
 providers:
   - id: https
     config:
-      url: http://127.0.0.1:8000/query # Replace this with your API endpoint
+      # url: http://127.0.0.1:8000/query # Replace this with your API endpoint
+      url: https://tds-virtual-teaching-assistant-1u36.vercel.app/query
       method: POST
       headers:
         Content-Type: application/json
