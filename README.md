@@ -4,7 +4,7 @@ This project develops a Virtual Teaching Assistant API tailored for the Tools in
 
 ## Features
 
-- ✅ **FastAPI REST endpoint** at `/api/` accepting POST requests
+- ✅ **FastAPI REST endpoint** at `/query/` accepting POST requests
 - ✅ **JSON request/response format** with question and optional base64 image
 - ✅ **Structured response** with answer and relevant links
 - ✅ **Course content integration** with TDS-specific knowledge
@@ -23,20 +23,21 @@ cp .env.example .env
 # Edit .env with your configuration
 ```
 
-3. Scrape Discourse data (optional):
+3. Scrape Discours data and Course Content (optional):
 ```bash
-python scraper/scraper.py
+python scrape_course.py
+python scrape_disourse.py
 ```
 
 4. Run the application:
 ```bash
-python app.py
+uvicorn app:app --reload
 ```
 
 ## API Usage
 
 ### Endpoint
-POST `/api/`
+POST `/query/`
 
 ### Request Format
 ```json
@@ -70,17 +71,10 @@ curl "https://your-app-url.com/api/" \
 
 ```
 ├── app.py                 # Main FastAPI application
-├── scraper/
-│   ├── scraper.py  # Discourse and Course Content data scraper
-├── data/
-│   ├── discourse_posts.json # Scraped Discourse data
-│   └── course_content.json  # Course content data
-├── models/
-│   ├── request_models.py     # Pydantic request models
-│   └── response_models.py    # Pydantic response models
-├── services/
-│   ├── question_processor.py # Question processing logic
-│   └── answer_generator.py   # Answer generation service
+├── scrape_course.py  # Discourse data scraper
+├── scrape_discourse.py # Course Content scraper
+├── knowledge_base.db # file containing all the scraped content
+├── procfile # used for deploying in render
 ├── requirements.txt       # Python dependencies
 ├── LICENSE               # MIT License
 └── README.md            # Project documentation
