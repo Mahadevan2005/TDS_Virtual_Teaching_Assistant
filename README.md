@@ -75,6 +75,7 @@ curl "https://your-app-url.com/api/" \
 ├── scrape_discourse.py # Course Content scraper
 ├── knowledge_base.db # file containing all the scraped content
 ├── procfile # used for deploying in render
+├── promptfoo.yaml # for testing the endpoint with various test cases
 ├── requirements.txt       # Python dependencies
 ├── LICENSE               # MIT License
 └── README.md            # Project documentation
